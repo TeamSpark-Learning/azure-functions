@@ -5,13 +5,14 @@ using Microsoft.Extensions.Logging;
 
 namespace azure_functions
 {
-    public static class QueueMessageProcessor
+    public static class Consumer
     {
-        [FunctionName("QueueMessageProcessor")]
+        [FunctionName(nameof(Consumer))]
         public static void Run(
-            [ServiceBusTrigger("lab01", Connection = "SBConnectionString")]string myQueueItem,
+            [ServiceBusTrigger("my-queue", Connection = "SBConnectionString")]string myQueueItem,
             ILogger log)
         {
+            // emulate workload
             Thread.Sleep(TimeSpan.FromSeconds(3));
             
             log.LogInformation($"C# ServiceBus queue trigger function processed message: {myQueueItem}");

@@ -1,0 +1,9 @@
+@count = 1000
+
+//@host = http://localhost:7071
+@host = https://sql-sat-898-backup.azurewebsites.net
+
+POST {{host}}/api/producer
+
+{{count}}
+
