@@ -1,0 +1,14 @@
+@instance = 4301c3ffb1814206b3287a104569d40c
+@code = UaePFUq1L/QzUwWMafj1c9bVTTHLehaySMreGS6JLw2PUkqLiaPljw==
+
+@host = http://localhost:7071
+//@host = https://sql-sat-898-backup.azurewebsites.net
+
+### Start orchestration
+GET {{host}}/api/MapReduce_HttpStart
+
+### Check orchestration status
+GET {{host}}/runtime/webhooks/durabletask/instances/{{instance}}
+    ?taskHub=DurableFunctionsHub
+    &connection=Storage
+    &code={{code}}
