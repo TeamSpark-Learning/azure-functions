@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Net.Http;
+using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
 using Microsoft.Azure.WebJobs.Extensions.Http;
@@ -9,24 +10,25 @@ namespace Durable
 {
     public static class MapReduce
     {
-        [FunctionName("MapReduce")]
+        [FunctionName(nameof(RunOrchestrator))]
         public static async Task<List<string>> RunOrchestrator(
             [OrchestrationTrigger] DurableOrchestrationContext context)
         {
             var outputs = new List<string>();
 
             // Replace "hello" with the name of your Durable Activity Function.
-            outputs.Add(await context.CallActivityAsync<string>("MapReduce_Hello", "Tokyo"));
-            outputs.Add(await context.CallActivityAsync<string>("MapReduce_Hello", "Seattle"));
-            outputs.Add(await context.CallActivityAsync<string>("MapReduce_Hello", "London"));
+            outputs.Add(await context.CallActivityAsync<string>(nameof(SayHello), "Tokyo"));
+            outputs.Add(await context.CallActivityAsync<string>(nameof(SayHello), "Seattle"));
+            outputs.Add(await context.CallActivityAsync<string>(nameof(SayHello), "London"));
 
             // returns ["Hello Tokyo!", "Hello Seattle!", "Hello London!"]
             return outputs;
         }
 
-        [FunctionName("MapReduce_Hello")]
+        [FunctionName(nameof(SayHello))]
         public static string SayHello([ActivityTrigger] string name, ILogger log)
         {
+            Thread.Sleep(5000);
             log.LogInformation($"Saying hello to {name}.");
             return $"Hello {name}!";
         }
@@ -38,7 +40,7 @@ namespace Durable
             ILogger log)
         {
             // Function input comes from the request content.
-            string instanceId = await starter.StartNewAsync("MapReduce", null);
+            string instanceId = await starter.StartNewAsync(nameof(RunOrchestrator), null);
 
             log.LogInformation($"Started orchestration with ID = '{instanceId}'.");
 
