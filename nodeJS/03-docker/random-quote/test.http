@@ -1,0 +1,6 @@
+@host = localhost
+@port = 7071
+
+GET http://{{host}}:{{port}}/api/random-quote
+
+

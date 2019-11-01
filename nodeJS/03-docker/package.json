@@ -1,0 +1,9 @@
+{
+  "name": "",
+  "version": "",
+  "scripts": {
+  },
+  "dependencies": {
+    "uuid": "^3.3.3"
+  }
+}
