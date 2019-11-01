@@ -1,0 +1,8 @@
+@host = localhost
+@port = 7071
+
+@message = hello world
+
+GET http://{{host}}:{{port}}/api/echo?text={{message}}
+
+
