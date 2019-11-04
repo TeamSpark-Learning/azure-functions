@@ -1,3 +1,3 @@
 func azure functionapp publish \
-    "" \
-    --publish-local-settings
+    "jsTalks-2019-01" \
+    --nozip
