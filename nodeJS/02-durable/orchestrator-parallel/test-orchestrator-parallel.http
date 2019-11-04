@@ -1,0 +1,8 @@
+@host = localhost
+@port = 7071
+
+@instance = e6b07917cf7d48329e71bd7ca850d861
+
+GET http://{{host}}:{{port}}/runtime/webhooks/durabletask/instances/{{instance}}?taskHub=DurableFunctionsHub&connection=Storage
+
+

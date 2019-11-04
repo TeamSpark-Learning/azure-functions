@@ -1,0 +1,6 @@
+@host = localhost
+@port = 7071
+
+POST http://{{host}}:{{port}}/api/orchestrators/orchestrator-sequential
+
+
