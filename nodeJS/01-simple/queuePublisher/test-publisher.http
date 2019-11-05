@@ -1,6 +1,6 @@
-@host = localhost
-@port = 7071
+@host = jsTalks-2019-01.azurewebsites.net
+@port = 80
 
 POST http://{{host}}:{{port}}/api/queuePublisher
 
-10
+100

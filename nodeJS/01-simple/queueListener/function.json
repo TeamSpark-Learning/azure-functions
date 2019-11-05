@@ -2,10 +2,10 @@
   "bindings": [
     {
       "name": "myQueueItem",
-      "type": "queueTrigger",
+      "type": "serviceBusTrigger",
       "direction": "in",
       "queueName": "js-queue-items",
-      "connection": "AzureWebJobsStorage"
+      "connection": "ServiceBus"
     }
   ]
 }

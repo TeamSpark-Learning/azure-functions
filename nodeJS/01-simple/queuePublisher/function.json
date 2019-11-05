@@ -15,11 +15,11 @@
       "name": "res"
     },
     {
-      "type": "queue",
+      "type": "serviceBus",
       "direction": "out",
       "name": "queueItems",
       "queueName": "js-queue-items",
-      "connection": "AzureWebJobsStorage"
+      "connection": "ServiceBus"
     }
   ]
 }
