@@ -9,9 +9,10 @@ module.exports = df.orchestrator(function * (context) {
 
     yield context.df.Task.all(tasks);
 
-    let outputs = tasks.map((task) => {
-        return task.result;
-    });
+    let outputs = tasks.reduce((accumulator, current) => {
+        accumulator.push(current.result);
+        return accumulator;
+    }, []);
 
     return outputs;
 });
