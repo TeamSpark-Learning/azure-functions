@@ -1,0 +1,9 @@
+
+@host = localhost
+@port = 7071
+
+@instance = 36140248a08d49c4bbecf58f4d84570f
+@event = Approved
+
+POST http://{{host}}:{{port}}/runtime/webhooks/durabletask/instances/{{instance}}/raiseEvent/{{event}}
+Content-Type: application/json

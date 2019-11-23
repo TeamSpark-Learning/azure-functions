@@ -1,0 +1,9 @@
+
+@host = localhost
+@port = 7071
+
+@instance = e6b07917cf7d48329e71bd7ca850d861
+@event = Declined
+
+POST http://{{host}}:{{port}}/runtime/webhooks/durabletask/instances/{{instance}}/raiseEvent/{{event}}
+Content-Type: application/json
