@@ -1,0 +1,6 @@
+@host = raspberrypi.local
+@port = 8080
+
+@text = hello jstalks
+
+GET http://{{host}}:{{port}}/api/echo?text={{text}}
