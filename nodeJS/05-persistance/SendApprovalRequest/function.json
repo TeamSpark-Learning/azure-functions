@@ -1,0 +1,18 @@
+{
+  "bindings": [
+    {
+      "name": "requestData",
+      "type": "activityTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "email",
+      "type": "sendGrid",
+      "direction": "out",
+      "apiKey": "SendGrid",
+      "to": "{manager}",
+      "from": "",
+      "subject": "Please approve this request"
+    }
+  ]
+}

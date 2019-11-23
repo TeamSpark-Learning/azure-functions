@@ -1,0 +1,27 @@
+{
+  "bindings": [
+    {
+      "name": "requestData",
+      "type": "activityTrigger",
+      "direction": "in"
+    },
+    {
+      "name": "emailWorker",
+      "type": "sendGrid",
+      "direction": "out",
+      "apiKey": "SendGrid",
+      "to": "{manager}",
+      "from": "",
+      "subject": "Approval request status changed"
+    },
+    {
+      "name": "emailManager",
+      "type": "sendGrid",
+      "direction": "out",
+      "apiKey": "SendGrid",
+      "to": "{worker}",
+      "from": "",
+      "subject": "Approval request status changed"
+    }
+  ]
+}

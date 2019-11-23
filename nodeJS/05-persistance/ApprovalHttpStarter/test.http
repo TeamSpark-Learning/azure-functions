@@ -1,0 +1,13 @@
+@host = localhost
+@port = 7071
+
+@manager = 
+@worker = 
+
+POST http://{{host}}:{{port}}/api/orchestrators/ApprovalOrchestrator
+Content-Type: application/json
+
+{
+    "manager": "{{manager}}",
+    "worker": "{{worker}}"
+}
