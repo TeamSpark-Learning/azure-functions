@@ -3,6 +3,7 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Azure.WebJobs;
+using Microsoft.Azure.WebJobs.Extensions.DurableTask;
 using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.Extensions.Logging;
 
@@ -12,7 +13,7 @@ namespace Durable
     {
         [FunctionName(nameof(RunOrchestrator))]
         public static async Task<List<string>> RunOrchestrator(
-            [OrchestrationTrigger] DurableOrchestrationContext context)
+            [OrchestrationTrigger] IDurableOrchestrationContext context)
         {
             var outputs = new List<string>();
 
@@ -33,10 +34,10 @@ namespace Durable
             return $"Hello {name}!";
         }
 
-        [FunctionName("MapReduce_HttpStart")]
+        [FunctionName(nameof(HttpStart))]
         public static async Task<HttpResponseMessage> HttpStart(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get")]HttpRequestMessage req,
-            [OrchestrationClient]DurableOrchestrationClient starter,
+            [HttpTrigger(AuthorizationLevel.Anonymous, "GET")]HttpRequestMessage req,
+            [DurableClient]IDurableClient starter,
             ILogger log)
         {
             // Function input comes from the request content.
