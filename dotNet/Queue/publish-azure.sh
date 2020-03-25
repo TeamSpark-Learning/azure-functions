@@ -1,4 +1,5 @@
 func azure functionapp publish \
-    sql-sat-898-backup \
+    otw-func \
     --publish-local-settings \
-    --overwrite-settings
+    --overwrite-settings \
+    --csharp
