@@ -1,0 +1,12 @@
+@baseUrl = http://localhost:7071
+@testIP = 1.2.3.4
+
+### health check
+GET {{baseUrl}}/api/health
+
+### display headers
+GET {{baseUrl}}/api/headers
+
+### redirect
+GET {{baseUrl}}/api/redirect
+X-Forwarded-For: {{testIP}}
